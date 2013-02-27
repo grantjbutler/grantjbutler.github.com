@@ -1,0 +1,58 @@
+@import compass/reset
+@import compass/css3/shared
+
+body
+  font-family: Helvetica, Arial, sans-serif
+  background: rgb(250, 250, 250)
+
+body, h1, h2, h3, h4, h5, h6
+  margin: 0
+  padding: 0
+
+a
+  text-decoration: none
+  background: rgb(255, 255, 236)
+  border: 1px solid rgb(251, 251, 227)
+  padding: 3px
+  color: rgb(50, 50, 50)
+
+h1
+  font-size: 350%
+  margin-bottom: 20px
+
+h2
+  font-size: 275%
+  margin-bottom: 20px
+
+h3
+  font-size: 150%
+  margin-bottom: 20px
+
+
+nav li
+  font-size: 300%
+  float: left
+  display: inline
+  
+  a
+    background: inherit
+    border: inherit
+    text-decoration: none
+    color: rgb(200, 200, 200)
+    +experimental(transition, color 0.25s)
+    
+    &:hover
+      color: rgb(150, 150, 150)
+    
+    span
+      display: none
+
+#container
+  width: 450px
+  height: 250px
+  position: absolute
+  top: 50%
+  left: 50%
+  margin-left: -225px
+  margin-top: -150px
+

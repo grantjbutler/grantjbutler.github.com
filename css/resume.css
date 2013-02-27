@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'Museo';
+    src: url('../font/Museo500-Regular-webfont.eot');
+    src: url('../font/Museo500-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Museo500-Regular-webfont.woff') format('woff'),
+         url('../font/Museo500-Regular-webfont.ttf') format('truetype'),
+         url('../font/Museo500-Regular-webfont.svg#Museo500Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo Sans';
+    src: url('../font/MuseoSans_500-webfont.eot');
+    src: url('../font/MuseoSans_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/MuseoSans_500-webfont.woff') format('woff'),
+         url('../font/MuseoSans_500-webfont.ttf') format('truetype'),
+         url('../font/MuseoSans_500-webfont.svg#museo_sans_500regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: 'Museo Sans';
+	color: rgb(103, 103, 103);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Museo';
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+}
+
+address {
+	font-style: normal;
+	display: inline-block;
+}
+
+h1, aside h2, section h2 {
+	text-transform: uppercase;
+	color: rgb(53, 53, 53);
+}
+
+.container > header {
+	margin-bottom: 15px;
+}
+
+header ul {
+	margin-top: 15px;
+	width: 100%;
+	display: -webkit-box;
+	display: box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	font-size: 75%;
+}
+
+header li {
+	color: rgb(53, 53, 53);
+	-webkit-box-flex: 1;
+	box-flex: 1;
+	text-align: center;
+}
+
+header h2, h3, h4 {
+	color: rgb(77, 77, 77);
+}
+
+.content, footer {
+	clear: both;
+}
+
+.content > aside {
+	float: left;
+	width: 23%;
+}
+
+section ul {
+	width: 100%;
+}
+
+section li {
+	padding: 2px;
+	padding-left: 14px;
+	margin-bottom: 5px;
+}
+
+aside h3 {
+	text-indent: 7px;
+	margin-bottom: 3px;
+}
+
+.content > section {
+	float: right;
+	width: 75%;
+}
+
+ul, li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.content section {
+	margin-bottom: 15px;
+}
+
+article {
+	padding: 7px;
+}
+
+article p {
+	margin: 0;
+	clear: both;
+}
+
+article header hgroup {
+	float: left;
+}
+
+article header .time {
+	float: right;
+}
+
+footer {
+	text-align: center;
+}
