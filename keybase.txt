@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/grantjbutler
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://grantjbutler.com
+  * I am grantjbutler (https://keybase.io/grantjbutler) on keybase.
+  * I have a public key ASAMKYTztonQoIw-jV99L17S-Pr4gFBM3D2yLJuOTh_uyAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101d65d56549e2d40d5485cde219df5b7d02050fb65d1c49b92bedb6943933a26ef0a",
+      "host": "keybase.io",
+      "kid": "01200c2984f3b689d0a08c3e8d5f7d2f5ed2f8faf880504cdc3db22c9b8e4e1feec80a",
+      "uid": "eb1c3da587bbc6f2b3c75825a9c5a400",
+      "username": "grantjbutler"
+    },
+    "merkle_root": {
+      "ctime": 1510526645,
+      "hash": "4091f8cdf8269a57798482302fa79eae04742daa30c3cc07101f5d569bae9cd2ee4d8f8f65ec4e2fe655e5da2ba4a4c451b9fa62147c9d8a4b104196e295908b",
+      "hash_meta": "ef887e0d3652e8d404304364dfe98f4a4289d1f08092e821498833a3f8f4d0e8",
+      "seqno": 1697585
+    },
+    "service": {
+      "hostname": "grantjbutler.com",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.34"
+  },
+  "ctime": 1510526657,
+  "expire_in": 504576000,
+  "prev": "f1abdec07020e7231747ddb4ff333f7a49d6d3dae270178abc32a064133a9aea",
+  "seqno": 12,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgDCmE87aJ0KCMPo1ffS9e0vj6+IBQTNw9siybjk4f7sgKp3BheWxvYWTFA0x7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxZDY1ZDU2NTQ5ZTJkNDBkNTQ4NWNkZTIxOWRmNWI3ZDAyMDUwZmI2NWQxYzQ5YjkyYmVkYjY5NDM5MzNhMjZlZjBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwMGMyOTg0ZjNiNjg5ZDBhMDhjM2U4ZDVmN2QyZjVlZDJmOGZhZjg4MDUwNGNkYzNkYjIyYzliOGU0ZTFmZWVjODBhIiwidWlkIjoiZWIxYzNkYTU4N2JiYzZmMmIzYzc1ODI1YTljNWE0MDAiLCJ1c2VybmFtZSI6ImdyYW50amJ1dGxlciJ9LCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTUxMDUyNjY0NSwiaGFzaCI6IjQwOTFmOGNkZjgyNjlhNTc3OTg0ODIzMDJmYTc5ZWFlMDQ3NDJkYWEzMGMzY2MwNzEwMWY1ZDU2OWJhZTljZDJlZTRkOGY4ZjY1ZWM0ZTJmZTY1NWU1ZGEyYmE0YTRjNDUxYjlmYTYyMTQ3YzlkOGE0YjEwNDE5NmUyOTU5MDhiIiwiaGFzaF9tZXRhIjoiZWY4ODdlMGQzNjUyZThkNDA0MzA0MzY0ZGZlOThmNGE0Mjg5ZDFmMDgwOTJlODIxNDk4ODMzYTNmOGY0ZDBlOCIsInNlcW5vIjoxNjk3NTg1fSwic2VydmljZSI6eyJob3N0bmFtZSI6ImdyYW50amJ1dGxlci5jb20iLCJwcm90b2NvbCI6Imh0dHA6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjM0In0sImN0aW1lIjoxNTEwNTI2NjU3LCJleHBpcmVfaW4iOjUwNDU3NjAwMCwicHJldiI6ImYxYWJkZWMwNzAyMGU3MjMxNzQ3ZGRiNGZmMzMzZjdhNDlkNmQzZGFlMjcwMTc4YWJjMzJhMDY0MTMzYTlhZWEiLCJzZXFubyI6MTIsInRhZyI6InNpZ25hdHVyZSJ9o3NpZ8RARTQtMFfZ7GpV57hMJVw6f7fzrEjXwEWHiWAOn0ndswXiWevm9ywqBZAjEFXbHQRZrsv1W2C4uVh+C9zJhAOrAahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIHrXiuwRCwZORFq9+PfzbT9YE7Wx1N6+YxHPLUi49j7fo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/grantjbutler
+
+==================================================================
