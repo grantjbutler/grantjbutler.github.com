@@ -107,6 +107,7 @@ nav li {
   font-size: 300%;
   float: left;
   display: inline;
+  margin-right: 15px;
 }
 /* line 37, ../sass/style.sass */
 nav li a {
