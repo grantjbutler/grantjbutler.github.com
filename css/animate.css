@@ -3284,3 +3284,11 @@ nav li:nth-child(3) {
   -o-animation-delay: 4.1s;
   animation-delay: 4.1s;
 }
+
+nav li:nth-child(4) {
+  -webkit-animation-delay: 4.4s;
+  -moz-animation-delay: 4.4s;
+  -ms-animation-delay: 4.4s;
+  -o-animation-delay: 4.4s;
+  animation-delay: 4.4s;
+}
