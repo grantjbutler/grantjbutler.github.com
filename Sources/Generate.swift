@@ -11,6 +11,7 @@ func generateSite() throws {
         .generateHTML(withTheme: .grantJButler, indentation: .spaces(2)),
         .generateRSSFeed(including: [.articles]),
         .generateSiteMap(),
-        .generateCNAME(with: ["grantjbutler.com"])
+        .generateCNAME(with: ["grantjbutler.com"]),
+        .deploy(using: .gitHub("grantjbutler/grantjbutler.github.com", branch: "gh-pages"))
     ])
 }
