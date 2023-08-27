@@ -74,7 +74,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                             Span(item.date.formatted(Date.FormatStyle().month().year()))
                                 .class("text-slate-500 font-light flex-none")
                         }
-                         .class("flex justify-between items-top sm:items-center gap-4")
+                        .class("flex justify-between items-start sm:items-center gap-4")
                         
                         Paragraph(item.metadata.summary)
                             .class("text-sm text-slate-500")
