@@ -69,10 +69,10 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                             .class("text-slate-700")
                             
                             Div()
-                                .class("border-b border-slate-300 flex-grow h-0")
+                                .class("border-b border-slate-300 flex-grow h-0 hidden sm:block")
                             
                             Span(item.date.formatted(Date.FormatStyle().month().year()))
-                                .class("text-slate-500 font-light")
+                                .class("text-slate-500 font-light flex-none")
                         }
                          .class("flex justify-between items-center gap-4")
                         
@@ -92,7 +92,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                     
                     HomepagePoster(title: "The Legend of Zelda: Tears of the Kingdom", link: URL(string: "https://zelda.com/tears-of-the-kingdom")!, imageURL: URL(string: "https://images.igdb.com/igdb/image/upload/t_cover_big/co5vmg.png")!)
                 }
-                .class("flex justify-between gap-4")
+                .class("grid grid-cols-2 sm:grid-cols-none sm:flex sm:justify-between gap-4")
             }
             .class("bg-gray-200")
         }
@@ -386,7 +386,7 @@ private struct HomepagePoster: Component {
             }
             .class("underline text-sm text-slate-700")
         }
-        .class("w-1/4 flex flex-col gap-2")
+        .class("sm:w-1/4 flex flex-col gap-2")
     }
 }
 
