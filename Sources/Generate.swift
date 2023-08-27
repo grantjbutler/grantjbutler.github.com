@@ -8,6 +8,7 @@ func generateSite() throws {
         .generateTailwindCSS(),
         .generateHTML(withTheme: .grantJButler, indentation: .spaces(2)),
         .generateRSSFeed(including: [.articles]),
-        .generateSiteMap()
+        .generateSiteMap(),
+        .generateCNAME(with: ["grantjbutler.com"])
     ])
 }

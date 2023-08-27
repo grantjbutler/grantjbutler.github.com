@@ -8,7 +8,7 @@ extension PublishingStep {
         inputPath: Path = "Resources/styles.css",
         outputPath: Path = "styles.css"
     ) -> PublishingStep {
-        .installPlugin(.init(name: "Generate Tailwind CSS", installer: { context in
+        .step(named: "Generate Tailwind CSS", body: { context in
             let packageRoot: Folder
             do {
                 packageRoot = try context.file(at: "tailwind.config.js").parent!
@@ -29,7 +29,7 @@ extension PublishingStep {
                 arguments: ["tailwindcss", "-i", context.file(at: inputPath).path, "-o", context.outputFile(at: outputPath).path, "--minify"],
                 at: packageRoot.path
             )
-        }))
+        })
     }
 }
 
