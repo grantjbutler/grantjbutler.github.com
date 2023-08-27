@@ -256,6 +256,7 @@ private struct SiteHeader<Site: Website>: Component {
                             Node<Any>.SVG.mastodon
                                 .class("w-4 h-4 fill-current text-gray-400 hover:text-gray-500")
                         }
+                        .linkRelationship("me")
                         
                         Link(url: "/feed.rss") {
                             Node<Any>.SVG.rss
