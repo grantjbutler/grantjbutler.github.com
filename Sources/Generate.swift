@@ -1,8 +1,10 @@
+import ReadingTimePublishPlugin
 import Publish
 
 func generateSite() throws {
     try GrantJButler().publish(using: [
         .addMarkdownFiles(),
+        .installPlugin(.readingTime()),
         .addDefaultSectionTitles(),
         .copyResources(at: "Resources/img", to: "img"),
         .generateTailwindCSS(),

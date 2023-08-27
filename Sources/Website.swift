@@ -9,7 +9,7 @@ struct GrantJButler: Website {
     }
     
     struct ItemMetadata: WebsiteItemMetadata {
-        
+        let summary: String
     }
 
     var name: String = "Grant J Butler"

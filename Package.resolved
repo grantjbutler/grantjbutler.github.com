@@ -64,6 +64,15 @@
       }
     },
     {
+      "identity" : "readingtimepublishplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alexito4/ReadingTimePublishPlugin",
+      "state" : {
+        "revision" : "0a0bf141a5b626c2444601cf0ed7b2bfcfdabcdf",
+        "version" : "0.3.0"
+      }
+    },
+    {
       "identity" : "shellout",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/johnsundell/shellout.git",
@@ -82,12 +91,30 @@
       }
     },
     {
+      "identity" : "swift-algorithms",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-algorithms",
+      "state" : {
+        "revision" : "b14b7f4c528c942f121c8b860b9410b2bf57825e",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "swift-argument-parser",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser",
       "state" : {
         "revision" : "8f4d2753f0e4778c76d5f05ad16c74f707390531",
         "version" : "1.2.3"
+      }
+    },
+    {
+      "identity" : "swift-numerics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-numerics",
+      "state" : {
+        "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
+        "version" : "1.0.2"
       }
     }
   ],
