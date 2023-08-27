@@ -3,3 +3,4 @@ node_modules/
 .swiftpm/
 .publish/
 .build/
+Output/
