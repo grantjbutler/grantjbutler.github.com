@@ -116,6 +116,15 @@
         "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
         "version" : "1.0.2"
       }
+    },
+    {
+      "identity" : "tailwindpublishplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/grantjbutler/TailwindPublishPlugin.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "af1b0b1b82f9c94a83f13b57537f04362262cd92"
+      }
     }
   ],
   "version" : 2

@@ -1,4 +1,5 @@
 import ReadingTimePublishPlugin
+import TailwindPublishPlugin
 import Publish
 
 func generateSite() throws {
@@ -7,7 +8,7 @@ func generateSite() throws {
         .installPlugin(.readingTime()),
         .addDefaultSectionTitles(),
         .copyResources(at: "Resources/img", to: "img"),
-        .generateTailwindCSS(),
+        .installPlugin(.tailwind()),
         .generateHTML(withTheme: .grantJButler, indentation: .spaces(2)),
         .generateRSSFeed(including: [.articles]),
         .generateSiteMap(),

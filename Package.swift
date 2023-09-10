@@ -13,6 +13,7 @@ let package = Package(
         .package(url: "https://github.com/JohnSundell/ShellOut", from: "2.3.0"),
         .package(url: "https://github.com/apple/swift-algorithms", from: "1.0.0"),
         .package(url: "https://github.com/alexito4/ReadingTimePublishPlugin", from: "0.3.0"),
+        .package(url: "https://github.com/grantjbutler/TailwindPublishPlugin.git", branch: "main"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -25,7 +26,8 @@ let package = Package(
                 .product(name: "FileWatcher", package: "FileWatcher"),
                 .product(name: "ShellOut", package: "ShellOut"),
                 .product(name: "Algorithms", package: "swift-algorithms"),
-                .product(name: "ReadingTimePublishPlugin", package: "ReadingTimePublishPlugin")
+                .product(name: "ReadingTimePublishPlugin", package: "ReadingTimePublishPlugin"),
+                .product(name: "TailwindPublishPlugin", package: "TailwindPublishPlugin"),
             ],
             path: "Sources"),
     ]
