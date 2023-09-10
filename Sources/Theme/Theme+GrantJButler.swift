@@ -60,7 +60,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
             .class("bg-gray-200")
             
             HomepageSection(title: "I write about whatever tickles my fancy.") {
-                for item in context.sections[.articles].items.prefix(5) {
+                for item in context.sections[.articles].items.reversed().prefix(5) {
                     Article {
                         Header {
                             H3 {
@@ -79,6 +79,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                         Paragraph(item.metadata.summary)
                             .class("text-sm text-slate-500")
                     }
+                    .class("mb-2 last:mb-0")
                 }
             }
             
@@ -105,8 +106,9 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                 H1(section.title)
                     .class("text-4xl font-bold mb-8")
                 
-                for (components, items) in section.items.chunked(onDate: \.date, calendar: context.dateFormatter.calendar) {
+                for (components, items) in section.items.reversed().chunked(onDate: \.date, calendar: context.dateFormatter.calendar) {
                     Node<Any>.element(named: "section", nodes: [
+                        .attribute(named: "class", value: "mb-8"),
                         .component(
                             ComponentGroup {
                                FullWidthHeader(title: context.dateFormatter.calendar.date(from: components)!.formatted(Date.FormatStyle().month(.wide).year()))
@@ -123,7 +125,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                                         Div {
                                             item.body
                                         }
-                                        .class("prose")
+                                        .class("prose max-w-none")
                                     }
                                 }
                             }
@@ -138,7 +140,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
     }
     
     func makeItemHTML(for item: Item<GrantJButler>, context: PublishingContext<GrantJButler>) throws -> HTML {
-        MainLayout(context: context, location: item) {
+        return MainLayout(context: context, location: item) {
             Container {
                 Article {
                     H1(item.title)
@@ -149,7 +151,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                     Div {
                         item.body
                     }
-                    .class("prose")
+                    .class("prose max-w-none")
                 }
             }
             .class("mb-8")
@@ -171,24 +173,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
     }
     
     func makeTagListHTML(for page: TagListPage, context: PublishingContext<GrantJButler>) throws -> HTML? {
-        return HTML(head: [
-            .meta(
-                .attribute(named: "http-equiv", value: "refresh"),
-                .attribute(named: "content", value: "0; url=/articles")
-            )
-        ], body: { })
-//        MainLayout(context: context, location: page) {
-//            Container {
-//                H1(page.title)
-//                    .class("text-4xl font-bold mb-8")
-//                
-//                for tag in page.tags.sorted(by: { $0.string < $1.string }) {
-//                    TagComponent(tag: tag, size: .default)
-//                }
-//            }
-//            .class("mb-8")
-//        }
-//        .document
+        return nil
     }
     
     func makeTagDetailsHTML(for page: TagDetailsPage, context: PublishingContext<GrantJButler>) throws -> HTML? {
@@ -197,8 +182,9 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                 H1("#\(page.tag.string)")
                     .class("text-4xl font-bold mb-8")
                 
-                for (components, items) in context.items(taggedWith: page.tag).sorted(by: { $0.date > $1.date }).chunked(onDate: \.date, calendar: context.dateFormatter.calendar) {
+                for (components, items) in context.chunkedItems(taggedWith: page.tag) {
                     Node<Any>.element(named: "section", nodes: [
+                        .attribute(named: "class", value: "relative mb-8"),
                         .component(
                             ComponentGroup {
                                 FullWidthHeader(title: context.dateFormatter.calendar.date(from: components)!.formatted(Date.FormatStyle().month(.wide).year()))
@@ -215,7 +201,6 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                                     }
                                 }
                             }
-                            .class("relative")
                         )
                     ])
                 }
@@ -269,7 +254,7 @@ private struct SiteHeader<Site: Website>: Component {
             }
             .class("flex justify-between items-baseline px-4 sm:px-2 py-3 border-b border-gray-400 container mx-auto lg:max-w-[1024px]")
         }
-        .class("bg-gray-100/40 backdrop-blur-md fixed w-full")
+        .class("bg-gray-100/[.65] backdrop-blur-md fixed w-full z-50")
     }
 }
 
@@ -462,5 +447,13 @@ private extension Collection {
                 return lhs.0.year! > rhs.0.year!
             }
         })
+    }
+}
+
+extension PublishingContext where Site == GrantJButler {
+    func chunkedItems(taggedWith tag: Tag) -> [(DateComponents, ArraySlice<Item<GrantJButler>>)] {
+        return items(taggedWith: tag)
+            .sorted(by: { $0.date > $1.date })
+            .chunked(onDate: \.date, calendar: .current)
     }
 }
