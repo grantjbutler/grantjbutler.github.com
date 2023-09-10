@@ -2,7 +2,6 @@ import Algorithms
 import Foundation
 import Plot
 import Publish
-import ReadingTimePublishPlugin
 
 extension Theme where Site == GrantJButler {
     static var grantJButler: Self {
@@ -129,7 +128,6 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                                     }
                                 }
                             }
-                            .class("relative")
                         )
                     ])
                 }
@@ -184,7 +182,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                 
                 for (components, items) in context.chunkedItems(taggedWith: page.tag) {
                     Node<Any>.element(named: "section", nodes: [
-                        .attribute(named: "class", value: "relative mb-8"),
+                        .attribute(named: "class", value: "mb-8"),
                         .component(
                             ComponentGroup {
                                 FullWidthHeader(title: context.dateFormatter.calendar.date(from: components)!.formatted(Date.FormatStyle().month(.wide).year()))
@@ -194,7 +192,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                                         H3 {
                                             Link(item.title, url: item.path.absoluteString)
                                         }
-                                        .class("text-slate-700")
+                                        .class("text-slate-700 font-medium")
                                         
                                         Paragraph(item.metadata.summary)
                                             .class("text-sm text-slate-500")
@@ -208,231 +206,6 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
             .class("mb-8")
         }
         .document
-    }
-}
-
-private struct SiteHeader<Site: Website>: Component {
-    let context: PublishingContext<Site>
-
-    var body: Component {
-        Header {
-            Div {
-                H1 {
-                    Link("Grant J Butler", url: "/")
-                }
-                .class("text-2xl font-semibold")
-                
-                Navigation {
-                    Div {
-                        for section in context.sections {
-                            Link(section.title, url: section.path.absoluteString)
-                                .class("font-medium text-gray-500 hover:text-gray-600")
-                        }
-                    }
-                    .class("flex gap-2")
-                    
-                    Div {
-                        Link(url: URL(string: "https://github.com/grantjbutler")!) {
-                            Node<Any>.SVG.github
-                                .class("w-4 h-4 fill-current text-gray-400 hover:text-gray-500")
-                        }
-                        
-                        Link(url: URL(string: "https://hachyderm.io/@grantjbutler")!) {
-                            Node<Any>.SVG.mastodon
-                                .class("w-4 h-4 fill-current text-gray-400 hover:text-gray-500")
-                        }
-                        .linkRelationship("me")
-                        
-                        Link(url: "/feed.rss") {
-                            Node<Any>.SVG.rss
-                                .class("w-4 h-4 fill-current text-gray-400 hover:text-gray-500")
-                        }
-                    }
-                    .class("flex gap-2")
-                }
-                .class("flex gap-4 items-center")
-            }
-            .class("flex justify-between items-baseline px-4 sm:px-2 py-3 border-b border-gray-400 container mx-auto lg:max-w-[1024px]")
-        }
-        .class("bg-gray-100/[.65] backdrop-blur-md fixed w-full z-50")
-    }
-}
-
-private struct SiteFooter: Component {
-    var body: Component {
-        Footer {
-            Container {
-                Paragraph("&copy; 2023 Grant J Butler")
-                    .class("text-center text-sm")
-            }
-        }
-        .class("bg-gray-300 py-6 text-gray-500")
-    }
-}
-
-private struct Container: Component {
-    @ComponentBuilder
-    let content: () -> Component
-    
-    var body: Component {
-        Div {
-            Div {
-                content()
-            }
-            .class("container mx-auto px-4 sm:px-0 md:max-w-[768px]")
-        }
-    }
-}
-
-private struct MainLayout<Site: Website> {
-    let context: PublishingContext<Site>
-    let location: Location
-    
-    @ComponentBuilder
-    let bodyClosure: () -> Plot.Component
-    
-    var document: HTML {
-        HTML(
-            .lang(context.site.language),
-            .head(for: location, on: context.site),
-            .body(
-                .class("bg-gray-100 text-slate-900"),
-                .component(SiteHeader(context: context)),
-                .div(
-                    .class("pt-24"),
-                    bodyClosure().convertToNode()
-                ),
-                .component(SiteFooter())
-            )
-        )
-    }
-}
-
-private struct HomepageSection: Component {
-    let title: String
-
-    @ComponentBuilder
-    let content: () -> Component
-    
-    var body: Component {
-        Container {
-            Article {
-                H2(title)
-                    .class("text-2xl text-slate-700 mb-4 font-semibold")
-                    
-                Div {
-                    content()
-                }
-            }
-            .class("py-6")
-        }
-    }
-}
-
-private struct HomepageDetails: Component {
-    let title: String
-    let subtitle: String
-    let link: URL
-    
-    @ComponentBuilder
-    let image: () -> Component
-    
-    var body: Component {
-        Div {
-            image()
-                .class("w-16 h-16 rounded-xl shadow")
-        
-            Div {
-                H3 {
-                    Link(title, url: link)
-                }
-                .class("font-medium underline")
-                
-                H4(subtitle)
-                    .class("text-sm text-slate-700")
-            }
-        }
-        .class("flex items-center gap-2")
-    }
-}
-
-private struct HomepagePoster: Component {
-    let title: String
-    let link: URL
-    let imageURL: URL
-
-    var body: Component {
-        Div {
-            Image(url: imageURL, description: title)
-                .class("rounded shadow")
-            
-            H3 {
-                Link(title, url: link)
-            }
-            .class("underline text-sm text-slate-700")
-        }
-        .class("sm:w-1/4 flex flex-col gap-2")
-    }
-}
-
-private struct ItemDetails: Component {
-    let item: Item<GrantJButler>
-    
-    var body: Component {
-        Div {
-            Div {
-                Time(datetime: item.date.formatted()) {
-                    Span(item.date.formatted(date: .abbreviated, time: .omitted))
-                }
-                
-                Node<Any>.raw("&mdash;")
-                
-                Span(DateComponentsFormatter.localizedString(from: DateComponents(minute: item.readingTime.minutes), unitsStyle: .short)!)
-            }
-            .class("text-slate-500 text-sm mb-1")
-            
-            for tag in item.tags {
-                TagComponent(tag: tag, size: .small)
-            }
-        }
-        .class("mb-3")
-    }
-}
-
-private struct FullWidthHeader: Component {
-    let title: String
-
-    var body: Component {
-        Div {
-            H2(title)
-                .class("isolate w-fit px-2 text-xl text-slate-400 font-semibold text-center bg-gray-100 z-10")
-        }
-        .class("flex justify-center items-center mb-4 before:border-b before:border-gray-300 before:h-0 before:w-full before:content-['_'] before:absolute before:top-1/2 before:left-0 before:z-0")
-    }
-}
-
-private struct TagComponent: Component {
-    enum Size {
-        case small
-        case `default`
-        
-        var classes: String {
-            switch self {
-            case .small:
-                return "text-xs rounded-sm"
-            case .default:
-                return "text-sm rounded"
-            }
-        }
-    }
-    
-    let tag: Tag
-    let size: Size
-    
-    var body: Component {
-        Link("#\(tag.string)", url: "/tags/\(tag.normalizedString())")
-            .class("bg-blue-100 text-blue-500 py-1 px-2")
-            .class(size.classes)
     }
 }
 
