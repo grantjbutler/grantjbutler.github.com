@@ -4,6 +4,7 @@ import Publish
 
 func generateSite(isDeploy: Bool) throws {
     try GrantJButler(isDeploy: isDeploy).publish(using: [
+        .highlightSyntax(),
         .addMarkdownFiles(),
         .filterDraftContent,
         .installPlugin(.readingTime()),

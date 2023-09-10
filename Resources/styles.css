@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.token.comment {
+    @apply text-gray-400;
+}
+
+.token.string, .token.string\-literal {
+    @apply text-red-400;
+}
+
+.token.keyword {
+    @apply text-pink-400;
+}
+
+.token.property, .token.function {
+    @apply text-teal-400;
+}
+
+.token.class\-name {
+    @apply text-cyan-400;
+}
