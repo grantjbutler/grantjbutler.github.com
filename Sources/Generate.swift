@@ -2,9 +2,10 @@ import ReadingTimePublishPlugin
 import TailwindPublishPlugin
 import Publish
 
-func generateSite() throws {
-    try GrantJButler().publish(using: [
+func generateSite(isDeploy: Bool) throws {
+    try GrantJButler(isDeploy: isDeploy).publish(using: [
         .addMarkdownFiles(),
+        .filterDraftContent,
         .installPlugin(.readingTime()),
         .addDefaultSectionTitles(),
         .copyResources(at: "Resources/img", to: "img"),

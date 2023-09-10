@@ -12,7 +12,7 @@ struct Serve: AsyncParsableCommand {
     func run() async throws {
         print("Performing initial generation of the site")
         
-        try Generate().run()
+        try generateSite(isDeploy: false)
     
         let outputURL = try GrantJButler.findRoot().appending(path: "Output", directoryHint: .isDirectory)
         

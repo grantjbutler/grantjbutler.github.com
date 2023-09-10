@@ -5,6 +5,6 @@ struct Generate: ParsableCommand {
     var deploy: Bool = false
     
     func run() throws {
-        try generateSite()
+        try generateSite(isDeploy: deploy)
     }
 }

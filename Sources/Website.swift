@@ -10,6 +10,18 @@ struct GrantJButler: Website {
     
     struct ItemMetadata: WebsiteItemMetadata {
         let summary: String
+        let draft: Bool
+        
+        enum CodingKeys: CodingKey {
+            case summary
+            case draft
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            self.summary = try container.decode(String.self, forKey: .summary)
+            self.draft = try container.decodeIfPresent(Bool.self, forKey: .draft) ?? false
+        }
     }
 
     var name: String = "Grant J Butler"
@@ -17,6 +29,8 @@ struct GrantJButler: Website {
     var url: URL = URL(string: "https://grantjbutler.com/")!
     var language: Plot.Language { .english }
     var imagePath: Publish.Path? { nil }
+    
+    let isDeploy: Bool
 }
 
 extension GrantJButler {
