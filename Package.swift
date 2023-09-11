@@ -29,6 +29,10 @@ let package = Package(
                 .product(name: "ReadingTimePublishPlugin", package: "ReadingTimePublishPlugin"),
                 .product(name: "TailwindPublishPlugin", package: "TailwindPublishPlugin"),
             ],
-            path: "Sources"),
+            path: "Sources",
+            resources: [
+                .copy("Steps/Prism/prism.js")
+            ]
+        ),
     ]
 )
