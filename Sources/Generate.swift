@@ -15,7 +15,7 @@ func generateSite(isDeploy: Bool) throws {
         .generateRSSFeed(including: [.articles]),
         .generateSiteMap(),
         .generateCNAME(with: ["grantjbutler.com"]),
-        .disableJekyllBuild,
+//        .disableJekyllBuild,
         .deploy(using: .gitHub("grantjbutler/grantjbutler.github.com", branch: "gh-pages"))
     ])
 }
