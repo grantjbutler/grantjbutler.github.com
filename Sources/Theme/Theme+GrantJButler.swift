@@ -59,7 +59,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
             .class("bg-gray-200")
             
             HomepageSection(title: "I write about whatever tickles my fancy.") {
-                for item in context.sections[.articles].items.reversed().prefix(5) {
+                for item in context.sections[.articles].items.sorted(by: { $0.date > $1.date}).prefix(5) {
                     Article {
                         Header {
                             H3 {
