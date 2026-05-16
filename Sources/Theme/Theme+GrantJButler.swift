@@ -89,13 +89,9 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
             
             HomepageSection(title: "I play a lot of video games.") {
                 Div {
-                    HomepagePoster(title: "Borderlands 3", link: URL(string: "https://borderlands.2k.com/borderlands-3/")!, imageURL: URL(string: "https://images.igdb.com/igdb/image/upload/t_cover_big/co20r3.png")!)
-                
-                    HomepagePoster(title: "Minecraft", link: URL(string: "https://minecraft.net/")!, imageURL: URL(string: "https://images.igdb.com/igdb/image/upload/t_cover_big/co49x5.png")!)
-                    
-                    HomepagePoster(title: "Slay the Spire", link: URL(string: "https://www.megacrit.com/")!, imageURL: URL(string: "https://images.igdb.com/igdb/image/upload/t_cover_big/co1iyf.png")!)
-                    
-                    HomepagePoster(title: "Tiny Tina's Wonderlands", link: URL(string: "https://playwonderlands.2k.com/")!, imageURL: URL(string: "https://images.igdb.com/igdb/image/upload/t_cover_big/co390m.png")!)
+                    for game in Game.all.prefix(6) {
+                        HomepagePoster(game)
+                    }
                 }
                 .class("grid grid-cols-2 sm:grid-cols-none sm:flex sm:justify-between gap-4")
             }
