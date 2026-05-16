@@ -24,6 +24,11 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                     }
                     .class("flex-none")
                     
+                    HomepageDetails(title: "Unprepared Casters", subtitle: "Overlay Developer", link: URL(string: "https://www.unpreparedcasters.com")!) {
+                        Image(url: "img/unprepared-casters.jpg", description: "Unprepared Casters")
+                    }
+                    .class("flex-none")
+                    
                     HomepageDetails(title: "Square", subtitle: "iOS Engineering", link: URL(string: "https://squareup.com/us/en/point-of-sale/retail")!) {
                         Image(url: "img/square.png", description: "Square")
                     }
