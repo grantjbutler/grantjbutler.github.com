@@ -117,7 +117,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                                         H3 {
                                             Link(item.title, url: item.path.absoluteString)
                                         }
-                                        .class("text-lg font-medium")
+                                        .class("text-2xl font-semibold")
                                         
                                         ItemDetails(item: item)
                                         

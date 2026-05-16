@@ -10,7 +10,7 @@ struct Container: Component {
             Div {
                 content()
             }
-            .class("container mx-auto px-4 sm:px-0 md:max-w-[768px]")
+            .class("container mx-auto px-4 lg:max-w-[1024px]")
         }
     }
 }

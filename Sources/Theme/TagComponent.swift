@@ -9,9 +9,9 @@ struct TagComponent: Component {
         var classes: String {
             switch self {
             case .small:
-                return "text-xs rounded-sm"
+                return "text-xs rounded"
             case .default:
-                return "text-sm rounded"
+                return "text-sm rounded-lg"
             }
         }
     }
