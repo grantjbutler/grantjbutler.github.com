@@ -2,6 +2,7 @@
 title: Making Tailwind and Publish Play Nice With Each Other
 tags: blogging, tailwind, publish
 summary: In which I make my website look decent.
+publish_date: 2023-09-11
 ---
 
 I won't lie. I'm not a designer. I may have an intiution about whether something is designed well or not by looking at it, but if you asked me to make something from scratch, while I may be able to make something usable, it's certainly not going to be the best designed thing you've ever seen.

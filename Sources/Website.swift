@@ -11,16 +11,22 @@ struct GrantJButler: Website {
     struct ItemMetadata: WebsiteItemMetadata {
         let summary: String
         let draft: Bool
+        let publishDate: Date
         
-        enum CodingKeys: CodingKey {
+        enum CodingKeys: String, CodingKey {
             case summary
             case draft
+            case publishDate = "publish_date"
         }
         
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             self.summary = try container.decode(String.self, forKey: .summary)
             self.draft = try container.decodeIfPresent(Bool.self, forKey: .draft) ?? false
+            
+            let strategy = Date.ParseStrategy(format: "\(year: .defaultDigits)-\(month: .defaultDigits)-\(day: .defaultDigits)", timeZone: .current)
+            
+            self.publishDate = try Date(try container.decode(String.self, forKey: .publishDate), strategy: strategy)
         }
     }
 

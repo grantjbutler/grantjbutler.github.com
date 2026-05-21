@@ -2,6 +2,7 @@
 title: So, Let's Try This &quot;Blogging&quot; Thing Again...
 tags: blogging
 summary: In which I rebuild my website to start writing again.
+publish_date: 2023-08-27
 ---
 
 Over the years, I've tried blogging a number of times, but it's never really stuck. While I may start strong, I would always eventaully fall off with posting things to the blog. Eventually, my personal site just turned into a landing page with links out to other places where I'm active or would post things.
