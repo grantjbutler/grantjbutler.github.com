@@ -24,11 +24,13 @@ struct GrantJButler: Website {
             self.summary = try container.decode(String.self, forKey: .summary)
             self.draft = try container.decodeIfPresent(Bool.self, forKey: .draft) ?? false
             
-            let strategy = Date.ParseStrategy(format: "\(year: .defaultDigits)-\(month: .defaultDigits)-\(day: .defaultDigits)", timeZone: .current)
+            let pacificTimeZone = TimeZone(identifier: "America/Los_Angeles")!
+            
+            let strategy = Date.ParseStrategy(format: "\(year: .defaultDigits)-\(month: .defaultDigits)-\(day: .defaultDigits)", timeZone: pacificTimeZone)
             let date = try Date(try container.decode(String.self, forKey: .publishDate), strategy: strategy)
             
             var calendar = Calendar.current
-            calendar.timeZone = .init(identifier: "America/Los_Angeles")!
+            calendar.timeZone = pacificTimeZone
             
             guard let publishDate = calendar.date(bySettingHour: 9, minute: 41, second: 00, of: date) else {
                 throw DecodingError.dataCorrupted(.init(codingPath: container.codingPath + [CodingKeys.publishDate], debugDescription: "Could not set time for publish date"))
