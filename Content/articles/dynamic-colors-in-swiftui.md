@@ -76,7 +76,7 @@ struct ContentView: View {
 }
 ```
 
-<div class="flex justify-center gap-x-3 w-full">
+<div class="flex flex-col lg:flex-row lg:justify-center gap-x-3 gap-y-3 w-full not-prose">
   <img src="/img/articles/dynamic-colors-in-swiftui/light-appearance.png" alt="The text 'Hello, world!' with a globe icon stacked above it. Both are layered on top of an orange background, as this is a screenshot from an app running in light mode, and the dynamic color resolves to orange in light mode.">
   <img src="/img/articles/dynamic-colors-in-swiftui/dark-appearance.png" alt="The text 'Hello, world!' with a globe icon stacked above it. Both are layered on top of an pink background, as this is a screenshot from an app running in dark mode, and the dynamic color resolves to pink in dark mode.">
 </div>
