@@ -64,7 +64,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
             .class("bg-gray-200")
             
             HomepageSection(title: "I write about whatever tickles my fancy.") {
-                for item in context.sections[.articles].items.sorted(by: { $0.metadata.publishDate > $1.metadata.publishDate }).prefix(5) {
+                for item in context.sections[.articles].items.sorted(by: { $0.date > $1.date }).prefix(5) {
                     Article {
                         Header {
                             H3 {
@@ -75,7 +75,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                             Div()
                                 .class("border-b border-slate-300 flex-grow h-0 hidden sm:block")
                             
-                            Span(item.metadata.publishDate.formatted(Date.FormatStyle().month().year()))
+                            Span(item.date.formatted(Date.FormatStyle().month().year()))
                                 .class("text-slate-500 font-light flex-none")
                         }
                         .class("flex justify-between items-start sm:items-center gap-4")
@@ -106,7 +106,7 @@ private struct GrantJButlerHTMLFactory: HTMLFactory {
                 H1(section.title)
                     .class("text-4xl font-bold mb-8")
                 
-                for (components, items) in section.items.reversed().chunked(onDate: \.metadata.publishDate, calendar: context.dateFormatter.calendar) {
+                for (components, items) in section.items.reversed().chunked(onDate: \.date, calendar: context.dateFormatter.calendar) {
                     Node<Any>.element(named: "section", nodes: [
                         .attribute(named: "class", value: "mb-8"),
                         .component(
@@ -227,7 +227,7 @@ private extension Collection {
 extension PublishingContext where Site == GrantJButler {
     func chunkedItems(taggedWith tag: Tag) -> [(DateComponents, ArraySlice<Item<GrantJButler>>)] {
         return items(taggedWith: tag)
-            .sorted(by: { $0.metadata.publishDate > $1.metadata.publishDate })
-            .chunked(onDate: \.metadata.publishDate, calendar: .current)
+            .sorted(by: { $0.date > $1.date })
+            .chunked(onDate: \.date, calendar: .current)
     }
 }

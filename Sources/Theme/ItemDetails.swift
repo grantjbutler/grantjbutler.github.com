@@ -8,8 +8,8 @@ struct ItemDetails: Component {
     var body: Component {
         Div {
             Div {
-                Time(datetime: item.metadata.publishDate.formatted()) {
-                    Span(item.metadata.publishDate.formatted(date: .abbreviated, time: .omitted))
+                Time(datetime: item.date.formatted()) {
+                    Span(item.date.formatted(date: .abbreviated, time: .omitted))
                 }
                 
                 Node<Any>.raw("&mdash;")

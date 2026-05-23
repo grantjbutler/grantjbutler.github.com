@@ -6,6 +6,7 @@ func generateSite(isDeploy: Bool) throws {
     try GrantJButler(isDeploy: isDeploy).publish(using: [
         .highlightSyntax(),
         .addMarkdownFiles(),
+        .overridePublishDates(),
         .filterDraftContent,
         .installPlugin(.readingTime()),
         .addDefaultSectionTitles(),
