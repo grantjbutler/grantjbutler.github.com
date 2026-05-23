@@ -54,8 +54,8 @@
                 <a href="/articles/dynamic-colors-in-swiftui">Dynamic Colors in SwiftUI</a></h3>
               <div class="mb-3">
                 <div class="text-slate-500 text-sm mb-1">
-                  <time datetime="5/20/2026, 12:41 PM">
-                    <span>May 20, 2026</span></time>
+                  <time datetime="5/22/2026, 12:41 PM">
+                    <span>May 22, 2026</span></time>
 &mdash;
                   <span>4 min</span></div>
                 <a href="/tags/swiftui" class="bg-blue-100 text-blue-500 py-1 px-2 text-xs rounded">#swiftui</a>
@@ -64,7 +64,7 @@
     <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function-definition function">dynamic</span><span class="token punctuation">(</span>light<span class="token punctuation">:</span> <span class="token class-name">Color</span><span class="token punctuation">,</span> dark<span class="token punctuation">:</span> <span class="token class-name">Color</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">Color</span> <span class="token punctuation">{</span>
         <span class="token class-name">Color</span><span class="token punctuation">(</span><span class="token class-name">UIColor</span><span class="token punctuation">(</span>dynamicProvider<span class="token punctuation">:</span> <span class="token punctuation">{</span> traitCollection <span class="token keyword">in</span>
             traitCollection<span class="token punctuation">.</span>userInterfaceStyle <span class="token operator">==</span> <span class="token punctuation">.</span>dark <span class="token operator">?</span> <span class="token class-name">UIColor</span><span class="token punctuation">(</span>dark<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token class-name">UIColor</span><span class="token punctuation">(</span>light<span class="token punctuation">)</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre><p>This works. There's nothing really wrong with it. This is part of the point of the SwiftUI API, to give us these escape hatches when we need to use them because the SwiftUI API surface has some gap. Fortunately, this gap was addressed in iOS 17 and macOS 14. Starting with these OS versions, SwiftUI added new requirements to the <code>ShapeStyle</code> protocol (which <code>Color</code>, among other things, conforms to):</p><pre><code class="language-swift"><span class="token attribute atrule">@available</span><span class="token punctuation">(</span>iOS <span class="token number">13.0</span><span class="token punctuation">,</span> macOS <span class="token number">10.15</span><span class="token punctuation">,</span> tvOS <span class="token number">13.0</span><span class="token punctuation">,</span> watchOS <span class="token number">6.0</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">protocol</span> <span class="token class-name">ShapeStyle</span> <span class="token punctuation">:</span> <span class="token class-name">Sendable</span> <span class="token punctuation">{</span>
@@ -103,9 +103,9 @@
         <span class="token punctuation">.</span><span class="token function">padding</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">background</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token keyword">dynamic</span><span class="token punctuation">(</span>light<span class="token punctuation">:</span> <span class="token class-name">Color</span><span class="token punctuation">.</span>orange<span class="token punctuation">,</span> dark<span class="token punctuation">:</span> <span class="token class-name">Color</span><span class="token punctuation">.</span>pink<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><div class="flex justify-center gap-x-3 w-full">
-  <img src="/img/articles/dynamic-colors-in-swiftui/light-appearance.png" alt="The text 'Hello, world!' with a globe icon stacked above it. Both are layered on top of an orange background, as this is a screenshot from an app running in light mode.">
-  <img src="/img/articles/dynamic-colors-in-swiftui/dark-appearance.png" alt="The text 'Hello, world!' with a globe icon stacked above it. Both are layered on top of an pink background, as this is a screenshot from an app running in dark mode.">
+<span class="token punctuation">}</span></code></pre><div class="flex flex-col lg:flex-row lg:justify-center gap-x-3 gap-y-3 w-full not-prose">
+  <img src="/img/articles/dynamic-colors-in-swiftui/light-appearance.png" alt="The text 'Hello, world!' with a globe icon stacked above it. Both are layered on top of an orange background, as this is a screenshot from an app running in light mode, and the dynamic color resolves to orange in light mode.">
+  <img src="/img/articles/dynamic-colors-in-swiftui/dark-appearance.png" alt="The text 'Hello, world!' with a globe icon stacked above it. Both are layered on top of an pink background, as this is a screenshot from an app running in dark mode, and the dynamic color resolves to pink in dark mode.">
 </div><p>In the situation that we do need to use a <code>Color</code> some place, we can leverage this initializer on <code>Color</code>:</p><pre><code class="language-swift"><span class="token attribute atrule">@frozen</span> <span class="token keyword">public</span> <span class="token keyword">struct</span> <span class="token class-name">Color</span> <span class="token punctuation">:</span> <span class="token class-name">Hashable</span><span class="token punctuation">,</span> <span class="token class-name">CustomStringConvertible</span><span class="token punctuation">,</span> <span class="token class-name">Sendable</span> <span class="token punctuation">{</span>
 
     <span class="token comment">/// Creates a color that represents the specified custom color.</span>
@@ -118,8 +118,8 @@
    
     <span class="token keyword">func</span> <span class="token function-definition function">resolve</span><span class="token punctuation">(</span><span class="token keyword">in</span> environment<span class="token punctuation">:</span> <span class="token class-name">EnvironmentValues</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">Color</span><span class="token punctuation">.</span><span class="token class-name">Resolved</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> environment<span class="token punctuation">.</span>colorScheme <span class="token operator">==</span> <span class="token punctuation">.</span>dark
-            <span class="token operator">?</span> dark<span class="token punctuation">.</span><span class="token function">resolved</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">:</span> environment<span class="token punctuation">)</span>
-            <span class="token punctuation">:</span> light<span class="token punctuation">.</span><span class="token function">resolved</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">:</span> environment<span class="token punctuation">)</span>
+            <span class="token operator">?</span> dark<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">:</span> environment<span class="token punctuation">)</span>
+            <span class="token punctuation">:</span> light<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">:</span> environment<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
