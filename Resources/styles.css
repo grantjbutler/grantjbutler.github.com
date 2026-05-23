@@ -21,3 +21,19 @@
 .token.class\-name {
     @apply text-cyan-400;
 }
+
+.token.deleted\-sign {
+    @apply bg-red-500/25;
+}
+
+.token.prefix.deleted {
+    @apply text-red-300;
+}
+
+.token.inserted\-sign {
+    @apply bg-green-500/25;
+}
+
+.token.prefix.inserted {
+    @apply text-green-400;
+}

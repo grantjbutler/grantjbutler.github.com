@@ -15,9 +15,17 @@ private extension Modifier {
     
         return .init(target: .codeBlocks) { html, markdown in
             let openingMarks = markdown.components(separatedBy: .newlines).first ?? "```"
-            let language = String(openingMarks.dropFirst("```".count))
+            let languageComponents = String(openingMarks.dropFirst("```".count))
             
-            guard language != "no-language" && !language.isEmpty && prism.languages.contains(language) else {
+            let components = languageComponents.split(separator: ",")
+            let language = String(components[0])
+            
+            guard language != "no-language" && !language.isEmpty else {
+                return html
+            }
+            
+            guard prism.isLanguageSupport(language) else {
+                print("Unsupported language \(language)")
                 return html
             }
             
